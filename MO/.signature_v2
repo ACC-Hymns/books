@@ -6,6 +6,10 @@
       "hash": "90c200f685bbe97093db694e5ab664adf297dd48"
     },
     {
+      "name": ".signature_v2",
+      "hash": "a9197d734abd76be03681c5cd5d57624a2cde969"
+    },
+    {
       "name": "songs",
       "children": [
         {
@@ -480,5 +484,5 @@
       "hash": "6db258a66b91e0b679364efdf48ded69696583e9"
     }
   ],
-  "hash": "28a78c408ec388c127723353ac4448f0d91d5251"
+  "hash": "d3867be53072a8f13a04146c383f7586708a18ac"
 }

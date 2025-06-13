@@ -6,6 +6,10 @@
       "hash": "769441d8e1f1908bf4b895abc36c7c3315c9a6b3"
     },
     {
+      "name": ".signature_v2",
+      "hash": "9cacbc145d0b0a0a74b83b4489269ec5c30b6089"
+    },
+    {
       "name": "CelebrationHymnal.pdf",
       "hash": "8e98133387726434d9037cc10a2415e0ee4e7f3c"
     },
@@ -3300,5 +3304,5 @@
       "hash": "de972d56671d8937d55025560ff4dcface4e4ee2"
     }
   ],
-  "hash": "ba92499b6a308fd4199df0f62483dbd1ae3aa447"
+  "hash": "4af5aaebe807c2effdcd03f6ca13b4fae2ca8e7a"
 }

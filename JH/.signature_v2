@@ -6,6 +6,10 @@
       "hash": "46c0b3f6faa17ebc27cf0bb3ebb223e4afcc32b1"
     },
     {
+      "name": ".signature_v2",
+      "hash": "244a54c8fd0a69b48ebf53e1895632dbade3642c"
+    },
+    {
       "name": "index.json",
       "hash": "f85c321172bb835818085126e8ea7d982650c279"
     },
@@ -672,5 +676,5 @@
       "hash": "65358435ce4e24a11f011bdf7613dac07bb6435b"
     }
   ],
-  "hash": "97c4dd4a9dab136fd02bd815a5568c0d91149ae6"
+  "hash": "a82b94242f1303ddc6d9151a430d14331496ba9a"
 }

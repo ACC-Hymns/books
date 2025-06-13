@@ -6,6 +6,10 @@
       "hash": "51d060bdfcec8b8ce7dafdb9aac5b7c662c13614"
     },
     {
+      "name": ".signature_v2",
+      "hash": "ec339d34840cfb5b5857219d8d5c2fa6716e06ee"
+    },
+    {
       "name": "index.json",
       "hash": "485b374ef2e980653ff04a48961012f74363b913"
     },
@@ -14,7 +18,7 @@
       "children": [
         {
           "name": "1.pdf",
-          "hash": "833c09a09460c9ed07fe1238fabe48f4546226cd"
+          "hash": "87cac6eb797f1952d2ae3056db81498804cdc989"
         },
         {
           "name": "10.pdf",
@@ -34,7 +38,7 @@
         },
         {
           "name": "103.pdf",
-          "hash": "8ca74b9f1fe9a60bd161452f95bd18588f483505"
+          "hash": "1d6e87e999b7591b3afb6eefa6a2a93d75f06178"
         },
         {
           "name": "104.pdf",
@@ -158,7 +162,7 @@
         },
         {
           "name": "2.pdf",
-          "hash": "fae905725bb97f5d2098e275e07841f496e77014"
+          "hash": "e3bf46a0067f5e3f66a0c60ecc4fc684f3b09693"
         },
         {
           "name": "20.pdf",
@@ -509,7 +513,7 @@
           "hash": "af2678c074d81b0a5032b84d65893444ce3e2282"
         }
       ],
-      "hash": "0374642cfeca1e3765a0ee7cf28e0ee2b42d998c"
+      "hash": "4a625218af587b612c1eac2a6af3a947c85866f4"
     },
     {
       "name": "songs.json",
@@ -520,5 +524,5 @@
       "hash": "49f751dccc3bf02f2661e875dc33fb1dc86bdd5d"
     }
   ],
-  "hash": "f864508cb3071b41a5ed035239bff751cbb8794d"
+  "hash": "947927611a11b7c335bdc72b77ca3f39868746fa"
 }
