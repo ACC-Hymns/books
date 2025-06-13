@@ -7,7 +7,7 @@
     },
     {
       "name": ".signature_v2",
-      "hash": "c5647599c4bb1fca54c38e090dde2c406f41ce84"
+      "hash": "4a9c37b6bd5bf7328a7ccba85b849abcfaad81c1"
     },
     {
       "name": "songs",
@@ -632,5 +632,5 @@
       "hash": "3115dd738f4d0f16467b3f2bd3d6a84431936615"
     }
   ],
-  "hash": "57719a4c5b91e726677acc2d0462fed7d3f5d371"
+  "hash": "13844fa466c4847dbf6e6bc9836396ebd06f8a67"
 }

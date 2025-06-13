@@ -7,7 +7,7 @@
     },
     {
       "name": ".signature_v2",
-      "hash": "ddf4e1dd53bde189f05800430a914f28ade9d9a3"
+      "hash": "cd00ad780a90a5e775850033c582d7e39d0f5f1d"
     },
     {
       "name": "index.json",
@@ -1232,5 +1232,5 @@
       "hash": "c43b886e51677aba7e0da5f9a095163da78f7f83"
     }
   ],
-  "hash": "3baca8308562813d2475671e02bc008fec9db768"
+  "hash": "255298757f8506ad45eca647d5164305e32b2f52"
 }
