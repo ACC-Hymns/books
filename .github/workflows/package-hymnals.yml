@@ -1,0 +1,33 @@
+
+name: Package Hymnals
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Zip Hymnal Folders
+        run: |
+          # Loop through folders like ZH, GH, HG...
+          for d in */; do
+            # Remove trailing slash for naming
+            dir=${d%/}
+            # Skip hidden folders like .github
+            if [[ "$dir" != .* ]]; then
+              echo "Zipping $dir..."
+              zip -r "${dir}.zip" "$dir"
+            fi
+          done
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: latest
+          files: "*.zip"
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
