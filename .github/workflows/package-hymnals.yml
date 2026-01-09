@@ -1,8 +1,11 @@
-
 name: Package Hymnals
 on:
   push:
     branches: [ main ]
+
+# Required for the GH CLI to create releases and upload assets
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -13,21 +16,23 @@ jobs:
 
       - name: Zip Hymnal Folders
         run: |
-          # Loop through folders like ZH, GH, HG...
           for d in */; do
-            # Remove trailing slash for naming
             dir=${d%/}
-            # Skip hidden folders like .github
-            if [[ "$dir" != .* ]]; then
+            if [[ "$dir" != .* && "$dir" != "node_modules" ]]; then
               echo "Zipping $dir..."
               zip -r "${dir}.zip" "$dir"
             fi
           done
 
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag_name: latest
-          files: "*.zip"
+      - name: Create or Update Release
         env:
-          GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Use 'latest' as the tag. 
+          # --clobber overwrites existing files with the same name.
+          # --notes allows the release to be created without a prompt.
+          gh release delete latest --yes || true
+          gh release create latest *.zip \
+            --title "Latest Hymnal Packages" \
+            --notes "Automated build from latest commit." \
+            --target main
