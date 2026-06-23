@@ -3,9 +3,10 @@ on:
   push:
     branches: [ main ]
 
-# Required for the GH CLI to create releases and upload assets
+# Required for the GH CLI to create releases, upload assets, and update repo variables
 permissions:
   contents: write
+  actions: write
 
 jobs:
   build:
@@ -24,14 +25,19 @@ jobs:
             fi
           done
 
-      - name: Create or Update Release
+      - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Use 'latest' as the tag. 
-          # --clobber overwrites existing files with the same name.
-          # --notes allows the release to be created without a prompt.
-          gh release create latest *.zip \
-            --title "Latest Hymnal Packages" \
-            --notes "Automated build from latest commit." \
+          RELEASE_TAG_NUMBER="${{ vars.RELEASE_TAG_NUMBER }}"
+          if [[ -z "$RELEASE_TAG_NUMBER" ]]; then
+            RELEASE_TAG_NUMBER=1
+          fi
+
+          gh release create "$RELEASE_TAG_NUMBER" *.zip \
+            --title "Hymnal Packages $RELEASE_TAG_NUMBER" \
+            --notes "Automated build from commit ${{ github.sha }}." \
             --target main
+
+          NEXT_TAG_NUMBER=$((RELEASE_TAG_NUMBER + 1))
+          gh variable set RELEASE_TAG_NUMBER --body "$NEXT_TAG_NUMBER"
