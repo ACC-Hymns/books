@@ -3,10 +3,9 @@ on:
   push:
     branches: [ main ]
 
-# Required for the GH CLI to create releases, upload assets, and update repo variables
+# GITHUB_TOKEN can create releases; updating repo variables requires a PAT (see Bump step).
 permissions:
   contents: write
-  actions: write
 
 jobs:
   build:
@@ -26,8 +25,9 @@ jobs:
           done
 
       - name: Create Release
+        id: release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           RELEASE_TAG_NUMBER="${{ vars.RELEASE_TAG_NUMBER }}"
           if [[ -z "$RELEASE_TAG_NUMBER" ]]; then
@@ -39,5 +39,10 @@ jobs:
             --notes "Automated build from commit ${{ github.sha }}." \
             --target main
 
-          NEXT_TAG_NUMBER=$((RELEASE_TAG_NUMBER + 1))
-          gh variable set RELEASE_TAG_NUMBER --body "$NEXT_TAG_NUMBER"
+          echo "next_tag_number=$((RELEASE_TAG_NUMBER + 1))" >> "$GITHUB_OUTPUT"
+
+      - name: Bump RELEASE_TAG_NUMBER
+        env:
+          GH_TOKEN: ${{ secrets.VARIABLES_TOKEN }}
+        run: |
+          gh variable set RELEASE_TAG_NUMBER --body "${{ steps.release.outputs.next_tag_number }}"
