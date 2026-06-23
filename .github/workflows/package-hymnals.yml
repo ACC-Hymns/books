@@ -31,7 +31,6 @@ jobs:
           # Use 'latest' as the tag. 
           # --clobber overwrites existing files with the same name.
           # --notes allows the release to be created without a prompt.
-          gh release delete latest --yes || true
           gh release create latest *.zip \
             --title "Latest Hymnal Packages" \
             --notes "Automated build from latest commit." \
