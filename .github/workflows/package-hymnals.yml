@@ -20,8 +20,8 @@ jobs:
             dir=${d%/}
             if [[ "$dir" != .* && "$dir" != "node_modules" ]]; then
               echo "Zipping $dir..."
-              find "$dir" -type f -exec touch -t 198001010000 {} +
-              find "$dir" -type f -print0 | LC_ALL=C sort -z | zip -X -@ "${dir}.zip"
+              find "$dir" -type f -print0 | xargs -0 touch -t 198001010000
+              find "$dir" -type f -print0 | LC_ALL=C sort -z | tr '\0' '\n' | zip -X -@ "${dir}.zip"
               sha256sum "${dir}.zip"
             fi
           done
