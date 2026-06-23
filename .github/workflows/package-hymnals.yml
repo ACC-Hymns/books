@@ -20,9 +20,13 @@ jobs:
             dir=${d%/}
             if [[ "$dir" != .* && "$dir" != "node_modules" ]]; then
               echo "Zipping $dir..."
-              zip -r "${dir}.zip" "$dir"
+              find "$dir" -type f -exec touch -t 198001010000 {} +
+              find "$dir" -type f -print0 | LC_ALL=C sort -z | zip -X -@ "${dir}.zip"
+              sha256sum "${dir}.zip"
             fi
           done
+          sha256sum *.zip > checksums.sha256
+          cat checksums.sha256
 
       - name: Create Release
         id: release
@@ -34,7 +38,7 @@ jobs:
             RELEASE_TAG_NUMBER=1
           fi
 
-          gh release create "$RELEASE_TAG_NUMBER" *.zip \
+          gh release create "$RELEASE_TAG_NUMBER" *.zip checksums.sha256 \
             --title "Hymnal Packages $RELEASE_TAG_NUMBER" \
             --notes "Automated build from commit ${{ github.sha }}." \
             --target main
